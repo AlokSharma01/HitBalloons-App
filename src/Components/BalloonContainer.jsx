@@ -37,7 +37,7 @@ export const BalloonContainer = () => {
           containerArray.map((item,id)=>{  
             return (
 
-              <Circle key ={id} circleColor={item.circleColor} onClick={handleReverse}></Circle>
+              <Circle key ={id} circleColor={item.circleColor} onClick={()=>handleReverse(item)}></Circle>
 
             )
             

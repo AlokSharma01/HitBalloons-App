@@ -23,9 +23,9 @@ export function BalloonProvider({children}){
     
             var data={
                 
-                circleNumber:i+1,
+                circleNumber:i+1,         //for reArranging the positions after shooting
                 circleColor:randomColor,
-                prevPosition:i+1,
+                prevPosition:i+1,        //for reversing the balloon to its original position
             }
     
             array.push(data);  // storing all the random circles in it
@@ -63,9 +63,20 @@ export function BalloonProvider({children}){
     }
 
 
-    const handleReverse=()=>{
+    const handleReverse=(item)=>{
 
-            console.log("reversing....")
+       
+           let temp =  [...balloons,item];
+        
+           temp.sort((a,b)=>a.prevPosition-b.prevPosition);
+
+            for(var i=0;i<temp.length;i++){
+
+                temp[i].circleNumber = temp[i].prevPosition
+            }
+           setBalloons([...temp])
+
+           setContainerArray([...containerArray.filter((x)=> x.circleNumber!=item.circleNumber)])
     }
 
     return ( 
