@@ -11,16 +11,15 @@ const Circle = styled.div`
     width:70px;
     height:70px;
     border-radius:100%;
-    border:1px solid black;
+    border:1px solid grey;
     background-color:${(props)=>props.circleColor};
     margin-top:20px;
 
 `
 export const BalloonStack = () => {
 
-  var balloonData = useContext(BalloonContext);
+  var {balloons} = useContext(BalloonContext);
 
-  console.log(balloonData)
 
   return (
     <Stack>
@@ -28,7 +27,7 @@ export const BalloonStack = () => {
         
 
         {
-          balloonData.map((item,id)=>{  
+          balloons.map((item,id)=>{  
             return (
 
               <Circle key ={id} circleColor={item.circleColor}></Circle>

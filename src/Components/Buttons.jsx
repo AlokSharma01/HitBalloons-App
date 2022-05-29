@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useContext } from 'react'
+import { BalloonContext } from '../Context/balloonContext'
 
 const ShootArea = styled.div`
 
@@ -28,11 +30,18 @@ const Shoot = styled.button`
 `
 
 export const Buttons = () => {
+
+  var {value,setValue,handleShoot} = useContext(BalloonContext)
   return (
     <ShootArea>
         <h3>Shoot Here</h3>
-        <Input type="number" placeholder='Enter Balloon Number' onChange={(e)=> e.currentTarget.value}/><br/>
-        <Shoot>Shoot</Shoot>
+        <Input type="number" placeholder='Enter Balloon Number' 
+
+        onChange={(e)=> setValue(e.currentTarget.value)} 
+
+        value={value}/><br/>
+
+        <Shoot onClick={handleShoot}>Shoot</Shoot>
     </ShootArea>
   )
 }
